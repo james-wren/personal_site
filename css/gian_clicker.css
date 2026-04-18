@@ -1,0 +1,113 @@
+body {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Joke vibe */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    background: #34495e;
+    border: 5px solid #ff8888;
+    padding: 20px;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #ff8888;
+    text-shadow: 2px 2px #c0392b;
+    margin-bottom: 10px;
+}
+
+.stats {
+    background: #2c3e50;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.click-area {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper {
+    background: radial-gradient(circle, #ff8888 0%, transparent 70%);
+    padding: 20px;
+}
+
+#clicker-image {
+    width: 250px;
+    cursor: pointer;
+    transition: transform 0.05s;
+    filter: drop-shadow(0 0 10px black);
+}
+
+#clicker-image:active {
+    transform: scale(0.85) rotate(5deg);
+}
+
+.upgrades-container {
+    flex: 1;
+    min-width: 300px;
+    background: #2c3e50;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.upgrade-item {
+    background: #3e5871;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    border-left: 5px solid #ff8888;
+    transition: background 0.3s;
+}
+
+.upgrade-item:hover {
+    background: #4e6a8e;
+}
+
+.upgrade-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.upgrade-name {
+    font-weight: bold;
+    display: block;
+}
+
+.upgrade-cost {
+    color: #2ecc71;
+    font-size: 0.9rem;
+}
+
+.placeholder-section {
+    margin-top: 30px;
+    border-top: 1px dashed #7f8c8d;
+    padding-top: 10px;
+    font-style: italic;
+    color: #bdc3c7;
+}
