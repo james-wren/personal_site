@@ -14,12 +14,12 @@ document.getElementById('game-header').style.width = `${boardPixelSize}px`;
 let speed = 170; 
 
 const imageSources = [
-    '../../assets/cros0.JPG',
-    '../../assets/cros1.JPG',
-    '../../assets/cros2.JPG',
-    '../../assets/cros3.JPG',
-    '../../assets/cros4.JPG',
-    '../../assets/cros5.JPG'
+    '../../assets/games/cros0.JPG',
+    '../../assets/games/cros1.JPG',
+    '../../assets/games/cros2.JPG',
+    '../../assets/games/cros3.JPG',
+    '../../assets/games/cros4.JPG',
+    '../../assets/games/cros5.JPG'
 ];
 
 const loadedImages = imageSources.map(src => {
