@@ -10,6 +10,7 @@
     <title>Homepage - James Wren</title>
 </head>
 <body>
+    <canvas id="bgcanvas"></canvas>
     <nav>
         <div id="logo_div">
             <img src="assets/logo.png" alt="James Wren">
@@ -24,21 +25,46 @@
         </div>
         <div id="ui_btns_div">
             <div class="ui_btn_div btn_div">
-                <a href="/settings/" class="ui_btn">Settings</a>
+                <a href="util/settings/" class="ui_btn">Settings</a>
             </div>
             <div class="ui_btn_div btn_div">
-                <a href="/settings/acount" class="ui_btn" style="border-right: none;">Account</a>
+                <a href="util/account/" class="ui_btn" style="border-right: none;">Account</a>
             </div>
         </div>
     </nav>
+
     <header>
-        <h1>Personal Website</h1>
+        <div id="header_box">
+            <h1>A website</h1>
+            <h2>By James Wren (obviously)</h2>
+        </div>
     </header>
-    <p>This portion of my website is currenty still in progress.</p>
-    <p>Your probally looking for this</p>
-    <p>|</p>
-    <a href="fun/gian_clicker/">Gian Carlo Clicker</a>
-    <br>
-    <a href="fun/crosby_snake/">Corsby Snake - <strong>NEW ADDITION</strong></a>
+    <main>
+        <div class="body_box pusher" id="description_box">
+            <h3>Description</h3>
+            <p>
+                This is my personal website (and also my first), no real purpose yet. 
+                Just here for me to learn and try things.
+            </p>
+        </div>
+        <div class="body_box pusher" id="style_box">
+            <h3>The style</h3>
+            <p>
+                The style of this site is made crazy on purpose.
+                I hate the modern minamilist simple designs. (Most people do). 
+                So I decided to use the Neo-Brutalist design style.
+                At the current moment this site is a pretty simple design, but 
+                this is not final. I am activly working on the site.
+            </p>
+        </div>
+        <div class="body_box pusher" id="feedback_box">
+            <h3>Feedback and Suggestions</h3>
+            <p>
+                <strong>I appreciate any and all feedback/suggestions.</strong> 
+                which can be made through any of my social media accounts or through the contact details at the bottom of this page.
+            </p>
+        </div>
+    </main>
+    <script src="js/background.js"></script>
 </body>
 </html>

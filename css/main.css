@@ -11,11 +11,28 @@
     --green: #aaff56;
     --ink: #000000;
     --muted: #6b6560;
+
+    --border: 5px solid black;
+    --border-half: 2.5px solid black;
+    --shadow: -1vw 1vw 0px var(--ink);
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: -1000;
 }
 
 body {
     margin: 0px;
+    background: none;
 }
+
+/* Nav bar start */
 
 nav {
     display: flex;
@@ -79,9 +96,96 @@ img {
     display: flex;
 }
 
+/* Header Box */
+#header_box {
+    background-color: var(--bg);
+    display: inline-block;
+    margin: 2vw 0vw 1vw 2vw;
+    padding: 2vw 3vw 2vw 1vw;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 100;
+}
+
 
 h1 {
-    font-size: 6vw;
+    font-size: 16vw;
     font-family: 'Bebas Neue';
-    text-decoration: underline 10px var(--pink);
+    text-decoration: underline 1.5vw var(--pink);
+    letter-spacing: 0.5vw;
+    margin: 0;
+    line-height: 1;
+}
+
+h2 {
+    font-family: 'Space Mono';
+    margin: 1vw 0vw 0vw 3vw;
+}
+
+/* Main Body */
+
+h3{
+    font-family: 'Bebas Neue';
+    font-size: 2vw;
+}
+
+p {
+    font-family: 'Space Mono';
+    font-size: 1.5vw;
+}
+
+.body_box {
+    display: inline-block;
+    border: var(--border);
+    padding: 0.5vw 0vw 1vw 1vw;
+    background-color: var(--bg);
+    position: relative;
+}
+
+#description_box {
+    margin: 2vw 0vw 0vw 5vw;
+    transition: all ease-in-out 100ms;
+    max-width: 40vw;
+    z-index: 1;
+}
+
+#style_box {
+    z-index: 2;
+    max-width: 60vw;
+    margin: -2vw 0vw 0vw 20vw;
+    transition: all ease-in-out 100ms;
+}
+
+#feedback_box {
+    max-width: 30vw;
+    margin: -2vw 0vw 0vw 10vw;
+    z-index: 1;
+    transition: all ease-in-out 100ms;
+}
+
+main:has(#description_box:hover) #description_box {
+    margin-left: 10vw;
+    margin-top: 5vw;
+}
+
+main:has(#description_box:hover) #style_box {
+    margin-top: 1vw;
+}
+
+main:has(#style_box:hover) #description_box {
+    margin-top: -1vw;
+}
+
+main:has(#style_box:hover) #style_box {
+    margin-top: 1vw;
+}
+
+main:has(#style_box:hover) #feedback_box {
+    margin-top: 1vw;
+}
+
+main:has(#feedback_box:hover) #style_box {
+    margin-top: -5vw;
+    margin-bottom: 3vw;
 }
