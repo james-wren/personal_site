@@ -17,19 +17,11 @@
     --shadow: -1vw 1vw 0px var(--ink);
 }
 
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0; 
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    z-index: -1000;
-}
-
 body {
     margin: 0px;
-    background: none;
+    background-image: url(../assets/bg_big.png);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Nav bar start */
@@ -96,6 +88,10 @@ img {
     display: flex;
 }
 
+.ui_svg {
+    height: 2vw;
+}
+
 /* Header Box */
 #header_box {
     background-color: var(--bg);
@@ -150,6 +146,14 @@ p {
     z-index: 1;
 }
 
+#friend_box {
+    margin: 5vw 0vw -10vw 6vw;
+    transition: all ease-in-out 100ms;
+    max-width: 40vw;
+    z-index: 1s;
+    vertical-align: top;
+}
+
 #style_box {
     z-index: 2;
     max-width: 60vw;
@@ -172,6 +176,15 @@ main:has(#description_box:hover) #description_box {
 main:has(#description_box:hover) #style_box {
     margin-top: 1vw;
 }
+
+main:has(#friend_box:hover) #friend_box {
+    margin-top: 3vw;
+}
+
+main:has(#friend_box:hover) #description_box {
+    margin-top: 11vw;
+}
+
 
 main:has(#style_box:hover) #description_box {
     margin-top: -1vw;
