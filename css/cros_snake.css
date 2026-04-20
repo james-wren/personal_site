@@ -3,6 +3,14 @@
     --header-color: #4a752c;
     --grid-1: #aad751;
     --grid-2: #a2d149;
+    /* Base size for mobile: 5.5% of viewport width */
+    --cell-size: 5.5vw; 
+}
+
+@media (min-width: 768px) {
+    :root {
+        --cell-size: 30px; /* Fixed size for desktop */
+    }
 }
 
 body {
@@ -10,73 +18,67 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: var(--bg-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     overflow: hidden;
+    touch-action: none; /* Crucial: stops the screen from moving while swiping */
 }
 
 header {
-    font-size: 4vw;
+    font-size: 6vw;
     font-weight: 800;
-    padding: 1vw;
+    padding: 2vh;
 }
 
 #game-container {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
+    max-width: 95vw;
 }
 
 #game-header {
     background-color: var(--header-color);
     display: flex;
     justify-content: space-between;
-    padding: 15px 25px;
+    padding: 10px 15px;
     box-sizing: border-box;
-    font-size: 26px; /* Slightly larger for the bigger board */
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
 #game-board {
     background-color: var(--grid-1);
     position: relative;
+    margin: 0 auto;
 }
 
-/* Updated to 45px (1.5x of 30px) */
-.cell {
+.cell, .snake-part, .food {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: var(--cell-size);
+    height: var(--cell-size);
 }
 
 .snake-part {
-    position: absolute;
-    width: 60px;
-    height: 60px;
     background-size: cover;
     background-position: center;
     z-index: 2;
-    border-radius: 5px;
+    border-radius: 15%;
 }
 
 .food {
-    position: absolute;
-    width: 60px;
-    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 18px; /* Easier to read on bigger cells */
-    color: white;
-    border-radius: 50%;
+    font-size: calc(var(--cell-size) * 0.6);
     z-index: 1;
+    border-radius: 50%;
 }
 
 #overlay {
@@ -89,20 +91,17 @@ header {
     justify-content: center;
     z-index: 10;
     text-align: center;
+    padding: 20px;
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
     background: #2ecc71;
     border: none;
     color: white;
     cursor: pointer;
     border-radius: 8px;
     margin-top: 15px;
-    transition: background 0.2s;
-}
-
-button:hover {
-    background: #27ae60;
+    -webkit-tap-highlight-color: transparent;
 }
