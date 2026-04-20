@@ -15,5 +15,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_WEBSERVER }}
           script: |
             cd /var/www/jameswren
-            git pull origin main
-            # add build commands like 'npm install' if needed
+            git fetch origin main
+            git reset --hard origin/main
