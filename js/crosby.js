@@ -201,6 +201,44 @@ window.addEventListener('keydown', e => {
     }
 });
 
+let touchStartX = 0;
+let touchStartY = 0;
+
+// Capture the start of the touch
+window.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+// Capture the end and calculate direction
+window.addEventListener('touchend', e => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const touchEndY = e.changedTouches[0].screenY;
+    
+    const dx = touchEndX - touchStartX;
+    const dy = touchEndY - touchStartY;
+    const threshold = 30; // Minimum swipe distance in pixels
+
+    // Check if movement was significant enough
+    if (Math.abs(dx) > threshold || Math.abs(dy) > threshold) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+            // Horizontal Swipe
+            if (dx > 0 && direction.x !== -1) {
+                nextDirection = { x: 1, y: 0 }; // Right
+            } else if (dx < 0 && direction.x !== 1) {
+                nextDirection = { x: -1, y: 0 }; // Left
+            }
+        } else {
+            // Vertical Swipe
+            if (dy > 0 && direction.y !== -1) {
+                nextDirection = { x: 0, y: 1 }; // Down
+            } else if (dy < 0 && direction.y !== 1) {
+                nextDirection = { x: 0, y: -1 }; // Up
+            }
+        }
+    }
+}, { passive: true });
+
 initBackground();
 spawnFood();
 setInterval(update, speed);
