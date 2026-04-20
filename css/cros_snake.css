@@ -4,12 +4,12 @@
     --grid-1: #aad751;
     --grid-2: #a2d149;
     /* Base size for mobile: 5.5% of viewport width */
-    --cell-size: 5.5vw; 
+    --cell-size: 6vw; 
 }
 
 @media (min-width: 768px) {
     :root {
-        --cell-size: 30px; /* Fixed size for desktop */
+        --cell-size: 40px; /* Fixed size for desktop */
     }
 }
 
@@ -27,12 +27,19 @@ body {
     touch-action: none; /* Crucial: stops the screen from moving while swiping */
 }
 
+
+
 header {
-    font-size: 6vw;
+    font-size: 3vw;
     font-weight: 800;
     padding: 2vh;
 }
 
+@media (max-width: 768px) {
+    header {
+        font-size: 10vw;
+    }
+}
 #game-container {
     position: relative;
     border-radius: 8px;

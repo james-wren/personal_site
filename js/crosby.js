@@ -4,7 +4,8 @@ const scoreDisplay = document.getElementById('score-display');
 
 const gridCount = 15; // Consistent grid size
 function getCellSize() {
-    return window.innerWidth < 768 ? (window.innerWidth * 0.055) : 30;
+    // 0.08 (8%) for mobile, 50 for desktop
+    return window.innerWidth < 768 ? (window.innerWidth * 0.06) : 40; 
 }
 
 let cellSize = getCellSize();
