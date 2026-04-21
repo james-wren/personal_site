@@ -10,16 +10,22 @@ function getCellSize() {
 
 let cellSize = getCellSize();
 let speed = 170; 
-let snake = [{ x: 7, y: 7 }];
-let foods = []; 
-let direction = { x: 0, y: 0 };
-let nextDirection = { x: 0, y: 0 };
-let gpa = 0.00;
-let score = 0;
-let gameRunning = true;
 
-const imageSources = ['../../assets/cros0.JPG', '../../assets/cros1.JPG', '../../assets/cros2.JPG', '../../assets/cros3.JPG', '../../assets/cros4.JPG', '../../assets/cros5.JPG'];
-const loadedImages = imageSources.map(src => { const img = new Image(); img.src = src; return img; });
+const imageSources = [
+    '../../assets/games/cros0.JPG',
+    '../../assets/games/cros1.JPG',
+    '../../assets/games/cros2.JPG',
+    '../../assets/games/cros3.JPG',
+    '../../assets/games/cros4.JPG',
+    '../../assets/games/cros5.JPG'
+];
+
+const loadedImages = imageSources.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
 const grades = [
     { label: 'A+', val: 0.4, color: '#2ecc71' }, 
     { label: 'A', val: 0.3, color: '#27ae60' },
