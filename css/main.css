@@ -37,7 +37,7 @@ nav {
 }
 
 img {
-    height: 7vh;
+    height: 4vw;
     padding: 0.5vw;
 }
 
@@ -132,6 +132,10 @@ h3{
 p {
     font-family: 'Space Mono';
     font-size: 1.5vw;
+}
+
+#mobile_thing {
+    display: none;
 }
 
 .body_box {
@@ -239,4 +243,63 @@ footer {
 
 #social_links img:hover {
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    img {
+        height: 7vw;
+    }
+
+    #mobile_thing {
+        display: inline;
+    }
+
+    .nav_link {
+        font-size: 4vw;
+    }
+
+    .ui_svg {
+        height: 4vw;
+    }
+
+    h1 {
+        font-size: 20vw;
+    }
+
+    .body_box {
+        display: block;
+    }
+
+    h3 {
+        font-size: 4vw;
+        letter-spacing: 0.25vw;
+    }
+
+    p {
+        font-size: 3vw;
+    }
+
+    #description_box {
+        margin: 4vw;
+        transition: all ease-in-out 100ms;
+        max-width: 80vw;
+    }
+
+    #friend_box {
+        margin: 4vw;
+        transition: all ease-in-out 100ms;
+        max-width: 80vw;
+    }
+
+    #style_box {
+        max-width: 80vw;
+        margin: 4vw;
+        transition: all ease-in-out 100ms;
+    }
+
+    #feedback_box {
+        max-width: 80vw;
+        margin: 4vw;
+        transition: all ease-in-out 100ms;
+    }
 }
