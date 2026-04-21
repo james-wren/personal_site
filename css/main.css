@@ -31,6 +31,9 @@ nav {
     justify-content: space-between;
     border-bottom: 5px solid black;
     background-color: var(--bg-off);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 img {
@@ -201,4 +204,39 @@ main:has(#style_box:hover) #feedback_box {
 main:has(#feedback_box:hover) #style_box {
     margin-top: -5vw;
     margin-bottom: 3vw;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;           
+    padding: 20px 5%;
+    background-color: var(--bg-off);      
+    border-top: var(--border);
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    margin-top: 5vw;
+}
+
+#foot_left p {
+    margin: 5px 0;
+}
+
+#foot_right {
+    text-align: right;
+}
+
+#social_links {
+    display: flex;
+    justify-content: center;
+}
+
+#social_links img {
+    width: 3vw;                    
+    height: auto;
+    transition: transform 0.2s;    
+}
+
+#social_links img:hover {
+    transform: scale(1.1);
 }
