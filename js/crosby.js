@@ -1,4 +1,3 @@
-// 1. Variable Declarations (The missing piece)
 const board = document.getElementById('game-board');
 const gpaDisplay = document.getElementById('gpa-display');
 const scoreDisplay = document.getElementById('score-display');
@@ -107,7 +106,7 @@ function update() {
     
     const now = Date.now();
     foods = foods.filter(f => now < f.expiresAt);
-    if (foods.length < 2) spawnFood();
+    if (foods.length < 4) spawnFood();
 
     // Prevent movement until a key is pressed
     if (nextDirection.x === 0 && nextDirection.y === 0) return;
@@ -137,7 +136,7 @@ function update() {
 }
 
 function spawnFood() {
-    while (foods.length < 2) {
+    while (foods.length < 4) {
         let nX = Math.floor(Math.random() * gridCount);
         let nY = Math.floor(Math.random() * gridCount);
         if (!snake.some(p => p.x === nX && p.y === nY) && !foods.some(f => f.x === nX && f.y === nY)) {
