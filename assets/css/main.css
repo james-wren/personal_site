@@ -19,7 +19,7 @@
 
 body {
     margin: 0px;
-    background-image: url(../assets/bg_big.png);
+    background-image: url(/assets/images/bg_big.png);
     background-size: cover;
     background-attachment: fixed;
 }

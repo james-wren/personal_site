@@ -14,12 +14,12 @@ let direction = { x: 0, y: 0 };
 let nextDirection = { x: 0, y: 0 };
 
 const imageSources = [
-    '../../assets/games/cros0.JPG',
-    '../../assets/games/cros1.JPG',
-    '../../assets/games/cros2.JPG',
-    '../../assets/games/cros3.JPG',
-    '../../assets/games/cros4.JPG',
-    '../../assets/games/cros5.JPG'
+    '/assets/images/games/cros0.JPG',
+    '/assets/images/games/cros1.JPG',
+    '/assets/images/games/cros2.JPG',
+    '/assets/images/games/cros3.JPG',
+    '/assets/images/games/cros4.JPG',
+    '/assets/images/games/cros5.JPG'
 ];
 
 const loadedImages = imageSources.map(src => {
