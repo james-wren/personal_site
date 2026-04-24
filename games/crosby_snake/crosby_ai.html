@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GPA Snake - Academic Survival</title>
+    <link rel="stylesheet" href="/assets/css/games/cros_snake.css">
+    <link rel="shortcut icon" href="/assets/images/fav_dark.ico" type="image/x-icon">
+</head>
+<body>
+    <header>Crosby Snake</header>
+    <div id="game-container">
+        <div id="game-header">
+            <div id="score-display">Score: 0</div>
+            <div id="gpa-display">GPA: 0.00</div>
+        </div>
+        <div id="game-board">
+            <div id="overlay">
+                <h2 id="win">Cant play lacrosse :(</h2>
+                <p id="final-stats"></p>
+                <button onclick="resetGame()">Retake Semester</button>
+            </div>
+        </div>
+    </div>
+    <div id="controls" style="margin-top: 15px; font-size: 0.9rem; text-align: center;">
+        <b>Swipe</b> or use <b>Arrow Keys</b> to steer!
+    </div>
+    <script src="/assets/js/crosby.js"></script>
+</body>
+</html>

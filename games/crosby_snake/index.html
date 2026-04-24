@@ -1,30 +1,88 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GPA Snake - Academic Survival</title>
-    <link rel="stylesheet" href="/assets/css/games/cros_snake.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="James Wren's personal site">
+    <meta name="keywords" content="James Wren, jameswren.dev, Gian Carlo Clicker, Crosby Snake, Crosby Clicker, web developer portfolio, indie games, browser games, JavaScript games, James Wren software engineer, play Gian Carlo Clicker online, unblocked snake game, Gian Carlo Clicker, Giancarlo, Videl Wall, Crosby Dunham, Snake Game, Clicker Game, NeoBrutalism">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/games/crosby_snake.css">
     <link rel="shortcut icon" href="/assets/images/fav_dark.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2208977461499313" crossorigin="anonymous"></script>
+    <title>[placeholder]</title>
 </head>
 <body>
-    <header>Crosby Snake</header>
-    <div id="game-container">
-        <div id="game-header">
-            <div id="score-display">Score: 0</div>
-            <div id="gpa-display">GPA: 0.00</div>
+    <nav>
+        <div id="logo_div">
+            <img src="/assets/images/logo.png" alt="James Wren">
         </div>
-        <div id="game-board">
-            <div id="overlay">
-                <h2 id="win">Cant play lacrosse :(</h2>
-                <p id="final-stats"></p>
-                <button onclick="resetGame()">Retake Semester</button>
+        <div id="main_nav_btns">
+            <div class="nav_btn_div btn_div" id="projects_btn_div">
+                <a class="nav_link" href="/projects/">Projects</a>
+            </div>
+            <div class="nav_btn_div btn_div" id="satire_btn_div">
+                <a class="nav_link" href="/games/">Games</a>
             </div>
         </div>
-    </div>
-    <div id="controls" style="margin-top: 15px; font-size: 0.9rem; text-align: center;">
-        <b>Swipe</b> or use <b>Arrow Keys</b> to steer!
-    </div>
-    <script src="/assets/js/crosby.js"></script>
+        <div id="ui_btns_div">
+            <div class="ui_btn_div btn_div">
+                <a href="/util/search/" class="ui_btn"><img class="ui_svg" src="/assets/images/search.svg" alt="Search"></a>
+            </div>
+            <div class="ui_btn_div btn_div">
+                <a href="/util/account/" class="ui_btn" style="border-right: none;"><img class="ui_svg" src="/assets/images/account.svg" alt="Account"></a>
+            </div>
+            <div class="ui_btn_div btn_div">
+                <a href="/util/settings/" class="ui_btn"><img class="ui_svg" src="/assets/images/setting.svg" alt="Settings"></a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div id="header_box">
+            <h1>Crosby Snake</h1>
+            <h2>by James Wren</h2>
+        </div>
+    </header>
+    <main>
+        <div class="body_box" id="[placeholder]">
+            <form>
+                <button type="submit">Start</button>
+
+                <label for="food">Number of food</label>
+                <input type="number" name="food" id="food">
+
+                <label for="size">Size of grid</label>
+                <select name="size" id="size">
+                    <option value="1">Small</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Large</option>
+                </select>
+
+                <label for="speed">Snake speed</label>
+                <select name="speed" id="speed">
+                    <option value="1">Slow</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Fast</option>
+                </select>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div id="foot_left">
+            <p>This site collects no data from its users</p>
+            <p>Copyright &copy; 2026 James Wren. All Rights Reserved.</p>
+            <p>Contact Info: (407)-505-9131 or jameswren.dev@gmail.com</p>
+        </div>
+        <div id="foot_right">
+            <div id="social_links">
+                <a href="https://github.com/james-wren"><img src="/assets/images/social_icons/github.svg" alt="Github"></a>
+                <a href=""><img src="/assets/images/social_icons/instagram.svg" alt="Instagram"></a>
+                <a href=""><img src="/assets/images/social_icons/tiktok.svg" alt="Tiktok"></a>
+            </div>
+            <p>Follow my socials</p>
+        </div>
+    </footer>
 </body>
 </html>
