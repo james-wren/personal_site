@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +15,9 @@
     <title>Crosby Clicker</title>
 </head>
 <body>
+    <div class="grey_out" id="grey_out"></div>
+    <div id="crosby_game"></div>
+
     <nav>
         <div id="logo_div">
             <img src="/assets/images/logo.png" alt="James Wren">
@@ -47,12 +51,12 @@
     </header>
     <main>
         <div class="body_box" id="game_box">
-            <form>
-                <button type="submit" >Start</button>
+            <form id="game_input">
+                <button type="submit" id="submit">Start</button>
 
                 <div id="food_num_div" class="option_box">
                     <label for="food">Number of food:</label>
-                    <input type="number" name="food" id="food">
+                    <input type="number" name="food" id="food" min="1" value="1">
                 </div>
 
                 <div id="size_div" class="option_box">
