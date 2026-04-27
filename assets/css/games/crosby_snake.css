@@ -6,6 +6,42 @@ h1 {
     font-size: 8vw;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
 .body_box {
+    display: flex;
     margin: 3vw;
+    padding: 0 3vw;
+    font-size: 2vw;
+    font-family: 'space mono';
+}
+
+.option_box {
+    margin: 1vw;
+}
+
+button[type="submit"] {
+    display: flex;
+    width: 60vw;
+    height: 7vh;
+    margin: 1vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono';
+    font-size: 3vw;
+}
+
+input[type="number"] {
+    font-size: 2vw;
+    font-family: 'space mono';
+    width: 3em;
+}
+
+#slow_arrow {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
 }

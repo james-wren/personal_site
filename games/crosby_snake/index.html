@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2208977461499313" crossorigin="anonymous"></script>
-    <title>[placeholder]</title>
+    <title>Crosby Clicker</title>
 </head>
 <body>
     <nav>
@@ -46,28 +46,36 @@
         </div>
     </header>
     <main>
-        <div class="body_box" id="[placeholder]">
+        <div class="body_box" id="game_box">
             <form>
-                <button type="submit">Start</button>
+                <button type="submit" >Start</button>
 
-                <label for="food">Number of food</label>
-                <input type="number" name="food" id="food">
+                <div id="food_num_div" class="option_box">
+                    <label for="food">Number of food:</label>
+                    <input type="number" name="food" id="food">
+                </div>
 
-                <label for="size">Size of grid</label>
-                <select name="size" id="size">
-                    <option value="1">Small</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Large</option>
-                </select>
+                <div id="size_div" class="option_box">
+                    <label for="size">Size of grid:</label>
+                    <br>
+                    <label for="small"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow"></label>
+                    <input type="radio" name="size" id="small" value="1">
+                    <label for="medium"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal"></label>
+                    <input type="radio" name="size" id="medium" value="2" checked>
+                    <label for="large"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast"></label>
+                    <input type="radio" name="size" id="large" value="3">
+                </div>
 
-                <label for="speed">Snake speed</label>
-                <select name="speed" id="speed">
-                    <option value="1">Slow</option>
-                    <option value="2">Normal</option>
-                    <option value="3">Fast</option>
-                </select>
-
-                
+                <div id="speed_div" class="option_box">
+                    <label for="speed">Snake speed:</label>
+                    <br>
+                    <label for="slow">Slow</label>
+                    <input type="radio" name="speed" id="slow" value="1">
+                    <label for="normal">Normal</label>
+                    <input type="radio" name="speed" id="normal" value="2" checked>
+                    <label for="fast">Fast</label>
+                    <input type="radio" name="speed" id="fast" value="3">
+                </div>
             </form>
         </div>
     </main>
@@ -86,5 +94,6 @@
             <p>Follow my socials</p>
         </div>
     </footer>
+    <script src="/assets/js/crosby_snake.js"></script>
 </body>
 </html>
