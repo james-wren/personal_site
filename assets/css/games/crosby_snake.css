@@ -53,14 +53,21 @@ input[type="number"] {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 100000;
+    align-items: center;
+    justify-content: center;
 }
 
-#crosby_game {
+#crosby_box {
     display: none;
     position: fixed;
     width: 80vh;
     height: 80vh;
     background-color: black;
     z-index: 1000000;
-    transform: translate(50vh, 7vw);
+    
+}
+
+#crosby_game {
+    display: grid;
+    height: 80vh;
 }

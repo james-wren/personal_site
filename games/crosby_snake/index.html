@@ -14,9 +14,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2208977461499313" crossorigin="anonymous"></script>
     <title>Crosby Clicker</title>
 </head>
-<body>
-    <div class="grey_out" id="grey_out"></div>
-    <div id="crosby_game"></div>
+<body id="body">
+    <div class="grey_out" id="grey_out">
+        <div id="crosby_box">
+            <div id="crosby_game"></div>
+        </div>
+    </div>
+    
 
     <nav>
         <div id="logo_div">
@@ -62,23 +66,23 @@
                 <div id="size_div" class="option_box">
                     <label for="size">Size of grid:</label>
                     <br>
-                    <label for="small"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow"></label>
-                    <input type="radio" name="size" id="small" value="1">
-                    <label for="medium"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal"></label>
-                    <input type="radio" name="size" id="medium" value="2" checked>
-                    <label for="large"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast"></label>
-                    <input type="radio" name="size" id="large" value="3">
+                    <label for="small"></label>
+                    <input type="radio" name="size" id="small" value="10">
+                    <label for="medium"></label>
+                    <input type="radio" name="size" id="medium" value="15" checked>
+                    <label for="large"></label>
+                    <input type="radio" name="size" id="large" value="20">
                 </div>
 
                 <div id="speed_div" class="option_box">
                     <label for="speed">Snake speed:</label>
                     <br>
-                    <label for="slow">Slow</label>
-                    <input type="radio" name="speed" id="slow" value="1">
-                    <label for="normal">Normal</label>
-                    <input type="radio" name="speed" id="normal" value="2" checked>
-                    <label for="fast">Fast</label>
-                    <input type="radio" name="speed" id="fast" value="3">
+                    <label for="slow"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow"></label>
+                    <input type="radio" name="speed" id="slow" value="750">
+                    <label for="normal"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal"></label>
+                    <input type="radio" name="speed" id="normal" value="500" checked>
+                    <label for="fast"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast"></label>
+                    <input type="radio" name="speed" id="fast" value="250">
                 </div>
             </form>
         </div>
