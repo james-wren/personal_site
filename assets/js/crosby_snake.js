@@ -20,8 +20,8 @@ async function gameLoop(rate){
 }
 
 function drawBg(xAmount, yAmount){
-    crosbyGame.style.gridTemplateColumns = 'repeat(20, 1fr)'
-    crosbyGame.style.gridTemplateRows = 'repeat(20, 1fr)'
+    crosbyGame.style.gridTemplateColumns = `repeat(${xAmount}, 1fr)`;
+    crosbyGame.style.gridTemplateRows = `repeat(${yAmount}, 1fr)`;
 
     for (let i = yAmount; i > 0; i--) {
         for (let j = xAmount; j > 0; j--){
