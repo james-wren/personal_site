@@ -59,15 +59,27 @@ input[type="number"] {
 
 #crosby_box {
     display: none;
-    position: fixed;
+    position: relative;
     width: 80vh;
     height: 80vh;
     background-color: black;
     z-index: 1000000;
-    
 }
 
-#crosby_game {
+#crosby_game_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: grid;
-    height: 80vh;
+    height: 100%;
+    width: 100%;
+}
+
+canvas {
+    border: 2px dotted red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

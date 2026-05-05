@@ -3,6 +3,7 @@ const gameBox = document.getElementById('game_box');
 const inputForm = document.getElementById('game_input');
 const submitBtn = document.getElementById('submit');
 const crosbyBox = document.getElementById('crosby_box');
+const crosbyGameBg = document.getElementById('crosby_game_bg');
 const crosbyGame = document.getElementById('crosby_game');
 let end = false;
 
@@ -20,8 +21,8 @@ async function gameLoop(rate){
 }
 
 function drawBg(xAmount, yAmount){
-    crosbyGame.style.gridTemplateColumns = `repeat(${xAmount}, 1fr)`;
-    crosbyGame.style.gridTemplateRows = `repeat(${yAmount}, 1fr)`;
+    crosbyGameBg.style.gridTemplateColumns = `repeat(${xAmount}, 1fr)`;
+    crosbyGameBg.style.gridTemplateRows = `repeat(${yAmount}, 1fr)`;
 
     for (let i = yAmount; i > 0; i--) {
         for (let j = xAmount; j > 0; j--){
@@ -32,9 +33,12 @@ function drawBg(xAmount, yAmount){
                 div.style.backgroundColor = 'red';
             }
             div.className = 'grid_square';
-            crosbyGame.appendChild(div);
+            crosbyGameBg.appendChild(div);
         }
     }
+
+    crosbyGame.width = crosbyGameBg.offsetWidth;
+    crosbyGame.height = crosbyGameBg.offsetHeight;
 }
 
 function crosbySnake(food, size, speed){
