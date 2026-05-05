@@ -44,10 +44,10 @@ img {
 #logo_div {
     border-right: 5px solid black;
 }
-
+/* 
 #logo_div:hover {
     background-color: var(--hover);
-}
+} */
 
 #main_nav_btns {
     display: flex;
