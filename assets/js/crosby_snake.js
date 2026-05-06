@@ -16,11 +16,19 @@ const images = [
     new Image()
 ]
 
+const food_images = [
+    new Image(), 
+    new Image(), 
+    new Image(), 
+    new Image(), 
+    new Image()
+]
+
 let end = false;
 let moveDir = "up";
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-async function gameLoop(rate, size){
+async function gameLoop(rate, size, food){
     const grid_width = canvas.width/size;
     const grid_height = canvas.height/size;
     let image_num = 0;
@@ -30,7 +38,9 @@ async function gameLoop(rate, size){
             'pos' : [canvas.width/2, canvas.height/2],
             'img' : images[0]
         }
-    }
+    };
+
+    let food_pos = {};
 
     let length = 0;
     let image_map = [];
@@ -44,6 +54,43 @@ async function gameLoop(rate, size){
             'pos' : [...snake_pos[length-1]['pos']], 
             'img' : img
         }
+    }
+
+    function addFood(){
+        let cur_amount = Object.keys(food_pos).length;
+        let food_num = Math.floor(Math.random() * 5);
+        let x = Math.floor(Math.random() * size) * grid_width;
+        let y = Math.floor(Math.random() * size) * grid_height;
+        let value;
+
+
+        switch(food_num){
+            case 0:
+                value = 'a';
+                break;
+            case 1:
+                value = 'b';
+                break;
+            case 2:
+                value = 'c';
+                break;
+            case 3:
+                value = 'd';
+                break;
+            case 4:
+                value = 'f';
+                break;
+        }
+
+        food_pos[cur_amount++] = {
+            'pos' : [x, y],
+            'img' : food_images[food_num],
+            'value' : value
+        }
+    }
+
+    for(i = 0; i < food; i++){
+        addFood();
     }
 
     while(true){
@@ -70,8 +117,11 @@ async function gameLoop(rate, size){
         }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for(let i=0; i < Object.keys(food_pos).length; i++){
+            ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0], food_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+        }
         for(let i=0; i < Object.keys(snake_pos).length; i++){
-            ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3)
+            ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
         }
         await sleep(rate);
     }
@@ -105,10 +155,14 @@ function crosbySnake(food, size, speed){
     drawBg(size, size);
 
     images.forEach((image, i) =>{
-        image.src = `/assets/images/games/cros${i}.JPG`;
+        image.src = `/assets/images/games/crosby/cros${i}.JPG`;
     });
 
-    gameLoop(speed, size);
+    food_images.forEach((image, i) =>{
+        image.src = `/assets/images/games/crosby/food/${i}.SVG`
+    });
+
+    gameLoop(speed, size, food);
 
     let widthAmount;
     let heightAmount;
