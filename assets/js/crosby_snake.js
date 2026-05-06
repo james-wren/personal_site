@@ -56,8 +56,7 @@ async function gameLoop(rate, size, food){
         }
     }
 
-    function addFood(){
-        let cur_amount = Object.keys(food_pos).length;
+    function addFood(num){
         let food_num = Math.floor(Math.random() * 5);
         let x = Math.floor(Math.random() * size) * grid_width;
         let y = Math.floor(Math.random() * size) * grid_height;
@@ -82,7 +81,7 @@ async function gameLoop(rate, size, food){
                 break;
         }
 
-        food_pos[cur_amount++] = {
+        food_pos[num] = {
             'pos' : [x, y],
             'img' : food_images[food_num],
             'value' : value
@@ -90,7 +89,7 @@ async function gameLoop(rate, size, food){
     }
 
     for(i = 0; i < food; i++){
-        addFood();
+        addFood(i);
     }
 
     while(true){
@@ -116,9 +115,14 @@ async function gameLoop(rate, size, food){
                 break;
         }
 
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(let i=0; i < Object.keys(food_pos).length; i++){
-            ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0], food_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+            if (Math.round(snake_pos[0]['pos'][0]) == Math.round(food_pos[i]['pos'][0]) && Math.round(snake_pos[0]['pos'][1]) == Math.round(food_pos[i]['pos'][1])) {
+                addFood(i); 
+            } else {
+                ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0], food_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+            }
         }
         for(let i=0; i < Object.keys(snake_pos).length; i++){
             ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
