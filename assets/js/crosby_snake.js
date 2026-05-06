@@ -142,6 +142,10 @@ async function gameLoop(rate, size, food){
         }
         await sleep(rate);
     }
+
+    document.getElementById('grey_out').style.display = 'none';
+    document.getElementById('crosby_box').style.display = 'none';
+    body.style.overflow = 'visible';
 }
 
 function drawBg(xAmount, yAmount){
@@ -168,6 +172,7 @@ function drawBg(xAmount, yAmount){
 function crosbySnake(food, size, speed){
     document.getElementById('grey_out').style.display = 'flex';
     document.getElementById('crosby_box').style.display = 'block';
+    body.style.overflow = 'hidden';
 
     drawBg(size, size);
 
