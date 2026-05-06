@@ -100,6 +100,14 @@ async function gameLoop(rate, size, food){
         let random = Math.floor(Math.random() * 6);
         let img = images[random];
 
+        const snake_length = Object.keys(snake_pos).length -1;
+
+        for(let i=snake_length; i >= 0; i--){
+            if(i != 0){
+                snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
+            }
+        }
+
         switch (moveDir){
             case "up":
                 snake_pos[0]['pos'][1] -= grid_height;
@@ -115,16 +123,17 @@ async function gameLoop(rate, size, food){
                 break;
         }
 
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for(let i=0; i < Object.keys(food_pos).length; i++){
             if (Math.round(snake_pos[0]['pos'][0]) == Math.round(food_pos[i]['pos'][0]) && Math.round(snake_pos[0]['pos'][1]) == Math.round(food_pos[i]['pos'][1])) {
-                addFood(i); 
+                addFood(i);
+                addCros();
             } else {
                 ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0], food_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
             }
         }
-        for(let i=0; i < Object.keys(snake_pos).length; i++){
+
+        for(let i=snake_length; i >= 0; i--){
             ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
         }
         await sleep(rate);
