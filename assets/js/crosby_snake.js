@@ -35,7 +35,7 @@ async function gameLoop(rate, size, food){
 
     let snake_pos = {
         0: {
-            'pos' : [canvas.width/2, canvas.height/2],
+            'pos' : [Math.floor(size / 2) * grid_width, Math.floor(size / 2) * grid_height],
             'img' : images[0]
         }
     };
