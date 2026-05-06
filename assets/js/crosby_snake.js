@@ -4,18 +4,75 @@ const inputForm = document.getElementById('game_input');
 const submitBtn = document.getElementById('submit');
 const crosbyBox = document.getElementById('crosby_box');
 const crosbyGameBg = document.getElementById('crosby_game_bg');
-const crosbyGame = document.getElementById('crosby_game');
-let end = false;
 
+const canvas = document.getElementById('crosby_game');
+const ctx = canvas.getContext("2d")
+const images = [
+    new Image(), 
+    new Image(), 
+    new Image(), 
+    new Image(), 
+    new Image(),
+    new Image()
+]
+
+let end = false;
+let moveDir = "up";
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-async function gameLoop(rate){
+async function gameLoop(rate, size){
+    const grid_width = canvas.width/size;
+    const grid_height = canvas.height/size;
+    let image_num = 0;
+
+    let snake_pos = {
+        0: {
+            'pos' : [canvas.width/2, canvas.height/2],
+            'img' : images[0]
+        }
+    }
+
+    let length = 0;
+    let image_map = [];
+
+    function addCros(){
+        let random = Math.floor(Math.random() * 6);
+        let img = images[random];
+        length++;
+
+        snake_pos[length] = {
+            'pos' : [...snake_pos[length-1]['pos']], 
+            'img' : img
+        }
+    }
+
     while(true){
         if (end) {
             break;
         }
-        // Put the code that moves the snake here
 
+        let random = Math.floor(Math.random() * 6);
+        let img = images[random];
+
+        switch (moveDir){
+            case "up":
+                snake_pos[0]['pos'][1] -= grid_height;
+                break;
+            case 'right':
+                snake_pos[0]['pos'][0] += grid_width;
+                break;
+            case 'down':
+                snake_pos[0]['pos'][1] += grid_height;
+                break;
+            case 'left':
+                snake_pos[0]['pos'][0] -= grid_width;
+                break;
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for(let i=0; i < Object.keys(snake_pos).length; i++){
+            ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3)
+        }
         await sleep(rate);
     }
 }
@@ -37,18 +94,21 @@ function drawBg(xAmount, yAmount){
         }
     }
 
-    crosbyGame.width = crosbyGameBg.offsetWidth;
-    crosbyGame.height = crosbyGameBg.offsetHeight;
+    canvas.width = crosbyGameBg.offsetWidth;
+    canvas.height = crosbyGameBg.offsetHeight;
 }
 
 function crosbySnake(food, size, speed){
-    let moveDir = "up";
-
     document.getElementById('grey_out').style.display = 'flex';
     document.getElementById('crosby_box').style.display = 'block';
 
     drawBg(size, size);
-    gameLoop(speed);
+
+    images.forEach((image, i) =>{
+        image.src = `/assets/images/games/cros${i}.JPG`;
+    });
+
+    gameLoop(speed, size);
 
     let widthAmount;
     let heightAmount;
@@ -74,7 +134,7 @@ function crosbySnake(food, size, speed){
 }
 
 inputForm.addEventListener('submit', (e) => {
-    event.preventDefault();
+    e.preventDefault();
 
     try {
         const choicesRaw = new FormData(e.target);
