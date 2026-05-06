@@ -93,10 +93,6 @@ async function gameLoop(rate, size, food){
     }
 
     while(true){
-        if (end) {
-            break;
-        }
-
         let random = Math.floor(Math.random() * 6);
         let img = images[random];
 
@@ -105,6 +101,10 @@ async function gameLoop(rate, size, food){
         for(let i=snake_length; i >= 0; i--){
             if(i != 0){
                 snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
+            } else {
+                if (snake_pos[i]['pos'][0] < grid_width || snake_pos[i]['pos'][1] < grid_height || snake_pos[i]['pos'][0] > canvas.width - (grid_width * 2) || snake_pos[i]['pos'][1] > canvas.height - (grid_height * 2)){
+                    end = true;
+                }
             }
         }
 
@@ -121,6 +121,10 @@ async function gameLoop(rate, size, food){
             case 'left':
                 snake_pos[0]['pos'][0] -= grid_width;
                 break;
+        }
+
+        if (end) {
+            break;
         }
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
