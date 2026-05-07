@@ -62,7 +62,6 @@ async function gameLoop(rate, size, food){
         let y = Math.floor(Math.random() * size) * grid_height;
         let value;
 
-
         switch(food_num){
             case 0:
                 value = 'a';
@@ -87,6 +86,7 @@ async function gameLoop(rate, size, food){
             'value' : value
         }
     }
+    
 
     for(i = 0; i < food; i++){
         addFood(i);
@@ -95,18 +95,6 @@ async function gameLoop(rate, size, food){
     while(true){
         let random = Math.floor(Math.random() * 6);
         let img = images[random];
-
-        const snake_length = Object.keys(snake_pos).length -1;
-
-        for(let i=snake_length; i >= 0; i--){
-            if(i != 0){
-                snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
-            } else {
-                if (snake_pos[i]['pos'][0] < grid_width || snake_pos[i]['pos'][1] < grid_height || snake_pos[i]['pos'][0] > canvas.width - (grid_width * 2) || snake_pos[i]['pos'][1] > canvas.height - (grid_height * 2)){
-                    end = true;
-                }
-            }
-        }
 
         switch (moveDir){
             case "up":
@@ -121,6 +109,17 @@ async function gameLoop(rate, size, food){
             case 'left':
                 snake_pos[0]['pos'][0] -= grid_width;
                 break;
+        }
+
+        const snake_length = Object.keys(snake_pos).length -1;
+        for(let i=snake_length; i >= 0; i--){
+            if(i != 0){
+                snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
+            } else {
+                if (snake_pos[i]['pos'][0] < 0 || snake_pos[i]['pos'][1] < 0 || snake_pos[i]['pos'][0] > canvas.width - grid_width || snake_pos[i]['pos'][1] > canvas.height - grid_height){
+                    end = true;
+                }
+            }
         }
 
         if (end) {
@@ -149,6 +148,7 @@ async function gameLoop(rate, size, food){
 }
 
 function drawBg(xAmount, yAmount){
+    crosbyGameBg.innerHTML = '';
     crosbyGameBg.style.gridTemplateColumns = `repeat(${xAmount}, 1fr)`;
     crosbyGameBg.style.gridTemplateRows = `repeat(${yAmount}, 1fr)`;
 
@@ -192,16 +192,24 @@ function crosbySnake(food, size, speed){
     document.addEventListener('keydown', (e) => {
         switch(e.key) {
             case "ArrowUp":
-                moveDir = 'up';
+                if(moveDir != 'down'){
+                    moveDir = 'up';
+                }
                 break;
             case "ArrowRight":
-                moveDir = 'right';
+                if (moveDir != 'left'){
+                    moveDir = 'right';
+                }
                 break;
             case "ArrowDown":
-                moveDir = 'down';
+                if(moveDir != 'up'){
+                    moveDir = 'down';
+                }
                 break;
             case "ArrowLeft":
-                moveDir = 'left';
+                if(moveDir != 'right'){
+                    moveDir = 'left';
+                }
                 break;
             case 'q':
                 end = true;
@@ -211,6 +219,7 @@ function crosbySnake(food, size, speed){
 
 inputForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    end = false;
 
     try {
         const choicesRaw = new FormData(e.target);
