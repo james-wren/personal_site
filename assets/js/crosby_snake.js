@@ -25,8 +25,10 @@ const food_images = [
 ]
 
 let end = false;
-let moveDir = "up";
+let moveDir = null;
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+let nextDir = null;
 
 async function gameLoop(rate, size, food){
     const grid_width = canvas.width/size;
@@ -35,7 +37,7 @@ async function gameLoop(rate, size, food){
 
     let snake_pos = {
         0: {
-            'pos' : [Math.floor(size / 2) * grid_width, Math.floor(size / 2) * grid_height],
+            'pos' : [10 * grid_width, 10 * grid_height],
             'img' : images[0]
         }
     };
@@ -88,26 +90,35 @@ async function gameLoop(rate, size, food){
     }
     
 
-    for(i = 0; i < food; i++){
+    for(let i = 0; i < food; i++){
         addFood(i);
     }
 
+    let frameCount = 0;
+    let frameRate = 20;
+
     while(true){
+        frameCount++;
         let random = Math.floor(Math.random() * 6);
         let img = images[random];
 
+        if (frameCount % frameRate == 0 && nextDir != null){
+            moveDir = nextDir;
+            nextDir = null;
+        }
+
         switch (moveDir){
             case "up":
-                snake_pos[0]['pos'][1] -= grid_height;
+                snake_pos[0]['pos'][1] -= grid_height / frameRate;
                 break;
             case 'right':
-                snake_pos[0]['pos'][0] += grid_width;
+                snake_pos[0]['pos'][0] += grid_width / frameRate;
                 break;
             case 'down':
-                snake_pos[0]['pos'][1] += grid_height;
+                snake_pos[0]['pos'][1] += grid_height / frameRate;
                 break;
             case 'left':
-                snake_pos[0]['pos'][0] -= grid_width;
+                snake_pos[0]['pos'][0] -= grid_width / frameRate;
                 break;
         }
 
@@ -116,7 +127,7 @@ async function gameLoop(rate, size, food){
             if(i != 0){
                 snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
             } else {
-                if (snake_pos[i]['pos'][0] < 0 || snake_pos[i]['pos'][1] < 0 || snake_pos[i]['pos'][0] > canvas.width - grid_width || snake_pos[i]['pos'][1] > canvas.height - grid_height){
+                if (snake_pos[i]['pos'][0] < -10 || snake_pos[i]['pos'][1] < -10 || snake_pos[i]['pos'][0] > canvas.width - grid_width + 10|| snake_pos[i]['pos'][1] > canvas.height - grid_height + 10){
                     end = true;
                 }
             }
@@ -139,7 +150,7 @@ async function gameLoop(rate, size, food){
         for(let i=snake_length; i >= 0; i--){
             ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
         }
-        await sleep(rate);
+        await sleep(rate/frameRate);
     }
 
     document.getElementById('grey_out').style.display = 'none';
@@ -193,22 +204,22 @@ function crosbySnake(food, size, speed){
         switch(e.key) {
             case "ArrowUp":
                 if(moveDir != 'down'){
-                    moveDir = 'up';
+                    nextDir = 'up';
                 }
                 break;
             case "ArrowRight":
                 if (moveDir != 'left'){
-                    moveDir = 'right';
+                    nextDir = 'right';
                 }
                 break;
             case "ArrowDown":
                 if(moveDir != 'up'){
-                    moveDir = 'down';
+                    nextDir = 'down';
                 }
                 break;
             case "ArrowLeft":
                 if(moveDir != 'right'){
-                    moveDir = 'left';
+                    nextDir = 'left';
                 }
                 break;
             case 'q':
