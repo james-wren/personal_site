@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="141.90396mm"
-   height="141.90396mm"
-   viewBox="0 0 141.90396 141.90396"
+   width="144.90395mm"
+   height="144.90395mm"
+   viewBox="0 0 144.90394 144.90394"
    version="1.1"
    id="svg1"
    xmlns="http://www.w3.org/2000/svg"
@@ -13,21 +13,22 @@
      id="defs1" />
   <g
      id="layer1"
-     transform="translate(-37.080427,-78.082844)">
+     transform="translate(-35.580429,-76.58284)"
+     style="stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1">
     <circle
-       style="fill:#fb9901;fill-opacity:1;stroke-width:0.264583"
+       style="fill:#fb9901;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
        id="path1"
        cx="108.03241"
        cy="149.03482"
        r="70.951981" />
     <text
        xml:space="preserve"
-       style="font-size:105.833px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#f9f9f9;stroke-width:0.264583"
+       style="font-size:105.833px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#f9f9f9;stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
        x="67.386543"
        y="185.7587"
        id="text2"><tspan
          id="tspan2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke:#000000;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
          x="67.386543"
          y="185.7587">D</tspan></text>
   </g>

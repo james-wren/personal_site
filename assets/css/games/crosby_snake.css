@@ -1,3 +1,8 @@
+:root {
+    --green1: #a7d948;
+    --green2: #8ecc39;
+}
+
 header {
     text-align: center;
 }
@@ -76,7 +81,6 @@ input[type="number"] {
 }
 
 canvas {
-    border: 2px dotted red;
     position: absolute;
     top: 0;
     left: 0;

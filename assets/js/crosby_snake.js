@@ -127,12 +127,9 @@ async function gameLoop(rate, size, food){
     
     function checkSnake(object){
         if (moveDir){
-            console.log(object);
             const touching = posHistory.some(([hx, hy]) => 
                 Math.round(object[0]) === Math.round(hx) && Math.round(object[1]) === Math.round(hy)
             );
-
-            console.log(touching ? 'touching' : 'not touching');
             return touching;
         } else {
             return false;
@@ -221,18 +218,18 @@ async function gameLoop(rate, size, food){
                 //Make the snake longer
                 addCros();
             } else { // If food is not touching then draw it on the canvas
-                ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0], food_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+                ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0] + 1.5, food_pos[i]['pos'][1] + 1.5, grid_width - 3, grid_height - 3);
             }
         }
 
         //Loops through each snake peice and draws it
         for(let i=snake_length; i >= 0; i--){
-            ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+            ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0] + 1.5, snake_pos[i]['pos'][1] + 1.5, grid_width - 3, grid_height - 3);
         }
 
         // Checks if posHistory is too long, this conserves memory
-        if(posHistory.length > (snake_length + 1) * frameRate){
-            posHistory.length = (snake_length + 2) * frameRate;
+        if(posHistory.length > (snake_length * frameRate)+25){
+            posHistory.length = (snake_length * frameRate)+25;
         }
 
         //Sleeps the loop
@@ -242,7 +239,6 @@ async function gameLoop(rate, size, food){
     document.getElementById('grey_out').style.display = 'none';
     document.getElementById('crosby_box').style.display = 'none';
     body.style.overflow = 'visible';
-    document.removeEventListener('keydown');
 }
 
 // Function to draw background grid
@@ -261,9 +257,11 @@ function drawBg(xAmount, yAmount){
 
             // Checks if both coordinates are even
             if (j % 2 == 0 && i % 2 == 0){
-                div.style.backgroundColor = 'red'; // Sets div background to red
+                div.style.backgroundColor = 'var(--green2)'; // Sets div background to red
             } else if (j % 2 != 0 && i % 2 != 0){ // Checks if both coordinates are odd
-                div.style.backgroundColor = 'red';// Sets background to red
+                div.style.backgroundColor = 'var(--green2)';// Sets background to red
+            } else {
+                div.style.backgroundColor = 'var(--green1)'
             }
             div.className = 'grid_square';// Sets div class name for styling
             crosbyGameBg.appendChild(div); // Adds div to screen
@@ -278,7 +276,7 @@ function drawBg(xAmount, yAmount){
 // Function to start the game
 function crosbySnake(food, size, speed){
     end = false;
-    // makes th egame box visible
+    // makes the game box visible
     document.getElementById('grey_out').style.display = 'flex';
     document.getElementById('crosby_box').style.display = 'block';
     body.style.overflow = 'hidden'; // Stops user from scrolling the background
@@ -329,6 +327,10 @@ function crosbySnake(food, size, speed){
     });
 }
 
+function superSnake(){
+    crosbySnake(10, 30, 100);
+}
+
 //Begins game on form submit
 inputForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevents page reload on submit
@@ -341,7 +343,7 @@ inputForm.addEventListener('submit', (e) => {
     try {
         const choicesRaw = new FormData(e.target);
         const choices = Object.fromEntries(choicesRaw.entries());
-        console.log(choices);//logs choices for debugging
+        console.debug(choices);//logs choices for debugging
 
         //starts game with the values from the form
         crosbySnake(parseInt(choices.food), parseInt(choices.size), parseInt(choices.speed));
