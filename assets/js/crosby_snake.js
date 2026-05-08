@@ -31,9 +31,10 @@ const food_images = [
 
 let end = false; //defines a variable to end the game when true
 let moveDir = null; //Defines a variable for the direction the snake is moving
+let nextDir = null;//Defines a varable to change directions
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));//Defines a timout promise for frame timing
 
-let nextDir = null;//Defines a varable to change directions
+
 
 //main gameloop function, this is where all code that runs over and over during the game goes
 async function gameLoop(rate, size, food){
@@ -93,6 +94,10 @@ async function gameLoop(rate, size, food){
         let y = Math.floor(Math.random() * size) * grid_height; // Randomly sets Y coordinate for food
         let value; // Creates variable to hold the value of the food
 
+        while(checkSnake([x, y])){
+            x = Math.floor(Math.random() * size) * grid_width;
+            y = Math.floor(Math.random() * size) * grid_height;
+        }
         // Switch to determine food value based on food_num 
         switch(food_num){
             case 0:
@@ -237,6 +242,7 @@ async function gameLoop(rate, size, food){
     document.getElementById('grey_out').style.display = 'none';
     document.getElementById('crosby_box').style.display = 'none';
     body.style.overflow = 'visible';
+    document.removeEventListener('keydown');
 }
 
 // Function to draw background grid
@@ -271,6 +277,7 @@ function drawBg(xAmount, yAmount){
 
 // Function to start the game
 function crosbySnake(food, size, speed){
+    end = false;
     // makes th egame box visible
     document.getElementById('grey_out').style.display = 'flex';
     document.getElementById('crosby_box').style.display = 'block';
@@ -326,6 +333,8 @@ function crosbySnake(food, size, speed){
 inputForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevents page reload on submit
     end = false; //Sets game to playing
+    moveDir = null;
+    nextDir = null;
 
     //Tries to get data from form and start game
     //If error it logs the error
