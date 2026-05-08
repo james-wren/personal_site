@@ -46,7 +46,8 @@ async function gameLoop(rate, size, food){
         // first snake peice
         0: {
             'pos' : [10 * grid_width, 10 * grid_height], //Sets intial position to 10,10
-            'img' : images[0] //Sets image to 1st image in list
+            'img' : images[0], //Sets image to 1st image in list
+            'dir' : 'up'
         }
     };
 
@@ -65,7 +66,23 @@ async function gameLoop(rate, size, food){
         // Adds another peice to the snake - NEEDS WORK
         snake_pos[length] = {
             'pos' : [...snake_pos[length-1]['pos']],  // Sets postion to the same position as the peice before it
-            'img' : img //Sets image to predetermined image
+            'img' : img, //Sets image to predetermined image
+            'dir' : snake_pos[length-1]['dir'] // sets dir equal to one infront
+        }
+
+        switch(snake_pos[length]['dir']){
+            case 'up':
+                snake_pos[length]['pos'][1] -= grid_height;
+                break;
+            case 'down':
+                snake_pos[length]['pos'][1] += grid_height;
+                break;
+            case 'left':
+                snake_pos[length]['pos'][0] -= grid_width;
+                break;
+            case 'right':
+                snake_pos[length]['pos'][0] += grid_width;
+                break;
         }
     }
 
@@ -103,6 +120,19 @@ async function gameLoop(rate, size, food){
         }
     }
     
+    function checkSnake(object){
+        if (moveDir){
+            console.log(object);
+            const touching = posHistory.some(([hx, hy]) => 
+                Math.round(object[0]) === Math.round(hx) && Math.round(object[1]) === Math.round(hy)
+            );
+
+            console.log(touching ? 'touching' : 'not touching');
+            return touching;
+        } else {
+            return false;
+        }
+    }
 
     //adds food for amount selected
     for(let i = 0; i < food; i++){
@@ -111,11 +141,18 @@ async function gameLoop(rate, size, food){
 
     let frameCount = 0; // Defines a counter for frames
     let frameRate = 20; // Defines the amount of times a snake should move per gridspace
+    let posHistory = []; // A array to store the past positions of the head
 
     //Main game loop, this is where the snake actually moves
     while(true){
         // Adds another frame to the count
         frameCount++;
+        if(checkSnake([...snake_pos[0]['pos']])){
+            end = true;
+        }
+
+        posHistory.unshift([...snake_pos[0]['pos']]);
+
 
         //Executes change in direction only when snake is on next grid space
         // Done by checking if snake has moved a full grid
@@ -130,15 +167,19 @@ async function gameLoop(rate, size, food){
                 // Adds on framerate of a grid space to the x or y coordinate
                 // When repeated framerate times the snake will have moved an entire grid square
                 snake_pos[0]['pos'][1] -= grid_height / frameRate;
+                snake_pos[0]['dir'] = 'up';
                 break;
             case 'right':
                 snake_pos[0]['pos'][0] += grid_width / frameRate;
+                snake_pos[0]['dir'] = 'right';
                 break;
             case 'down':
                 snake_pos[0]['pos'][1] += grid_height / frameRate;
+                snake_pos[0]['dir'] = 'down';
                 break;
             case 'left':
                 snake_pos[0]['pos'][0] -= grid_width / frameRate;
+                snake_pos[0]['dir'] = 'left';
                 break;
         }
 
@@ -148,8 +189,9 @@ async function gameLoop(rate, size, food){
         for(let i=snake_length; i >= 0; i--){
             // If the peice is not the head then it moves the piece up to the peice infront of it
             if(i != 0){
-                snake_pos[i]['pos'] = [...snake_pos[i-1]['pos']];
-            
+                if(posHistory[i * frameRate]){
+                    snake_pos[i]['pos'] = [...posHistory[i * frameRate]];
+                }
             // checks if the snake head is touching a wall, if it is it ends the game
             } else if (snake_pos[i]['pos'][0] < -10 || snake_pos[i]['pos'][1] < -10 || snake_pos[i]['pos'][0] > canvas.width - grid_width + 10|| snake_pos[i]['pos'][1] > canvas.height - grid_height + 10){
                 end = true;
@@ -181,6 +223,11 @@ async function gameLoop(rate, size, food){
         //Loops through each snake peice and draws it
         for(let i=snake_length; i >= 0; i--){
             ctx.drawImage(snake_pos[i]['img'], snake_pos[i]['pos'][0], snake_pos[i]['pos'][1], grid_width - 3, grid_height - 3);
+        }
+
+        // Checks if posHistory is too long, this conserves memory
+        if(posHistory.length > (snake_length + 1) * frameRate){
+            posHistory.length = (snake_length + 2) * frameRate;
         }
 
         //Sleeps the loop
