@@ -136,6 +136,28 @@ async function gameLoop(rate, size, food){
         }
     }
 
+    function getGpa(food) {
+        let gpa_value = 0;
+        switch(food['value']){
+            case 'a':
+                gpa_value += 0.5;
+                break;
+            case 'b':
+                gpa_value += 0.3;
+                break;
+            case 'c':
+                gpa_value += 0.1;
+                break;
+            case 'd':
+                gpa_value -=0.1;
+                break;
+            case 'f':
+                gpa_value -=0.3;
+                break;
+        }
+        return gpa_value;
+    }
+
     //adds food for amount selected
     for(let i = 0; i < food; i++){
         addFood(i);
@@ -144,6 +166,8 @@ async function gameLoop(rate, size, food){
     let frameCount = 0; // Defines a counter for frames
     let frameRate = 20; // Defines the amount of times a snake should move per gridspace
     let posHistory = []; // A array to store the past positions of the head
+    let gpa = 0.00;
+    let length_score = 1;
 
     //Main game loop, this is where the snake actually moves
     while(true){
@@ -213,9 +237,13 @@ async function gameLoop(rate, size, food){
             // Checks if snake head is touching a peice of food
             if (Math.round(snake_pos[0]['pos'][0]) == Math.round(food_pos[i]['pos'][0]) && Math.round(snake_pos[0]['pos'][1]) == Math.round(food_pos[i]['pos'][1])) {
                 // If it is, replace that peice of food with a new one
+                gpa += getGpa(food_pos[i]);
+                parseFloat(gpa.toFixed(2));
                 addFood(i);
-
+                length_score++;
                 //Make the snake longer
+                console.log(`Gpa is ${gpa}`);
+                console.log(`length is ${length_score}`);
                 addCros();
             } else { // If food is not touching then draw it on the canvas
                 ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0] + 1.5, food_pos[i]['pos'][1] + 1.5, grid_width - 3, grid_height - 3);
