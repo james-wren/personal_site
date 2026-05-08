@@ -17,6 +17,11 @@
 <body id="body">
     <div class="grey_out" id="grey_out">
         <div id="crosby_box">
+            <div id="game_header">
+                <h5 id="header_item">Length: 1</h5>
+                <h4 id="header_item">Crosby Snake</h4>
+                <h5 id="header_item">GPA: 0.0</h5>
+            </div>
             <div id="crosby_game_bg"></div>
             <canvas id="crosby_game"></canvas>
         </div>
@@ -67,23 +72,23 @@
                 <div id="size_div" class="option_box">
                     <label for="size">Size of grid:</label>
                     <br>
-                    <label for="small"></label>
-                    <input type="radio" name="size" id="small" value="11">
-                    <label for="medium"></label>
-                    <input type="radio" name="size" id="medium" value="15" checked>
-                    <label for="large"></label>
-                    <input type="radio" name="size" id="large" value="20">
+                    <label for="small"><img src="/assets/images/small_game.svg" alt="Small"></label>
+                    <input type="radio" name="size" id="small" value="11" class="hidden_radio">
+                    <label for="medium"><img src="/assets/images/medium_game.svg" alt="Medium"></label>
+                    <input type="radio" name="size" id="medium" value="15" checked class="hidden_radio">
+                    <label for="large"><img src="/assets/images/large_game.svg" alt="Large"></label>
+                    <input type="radio" name="size" id="large" value="20" class="hidden_radio">
                 </div>
 
                 <div id="speed_div" class="option_box">
                     <label for="speed">Snake speed:</label>
                     <br>
                     <label for="slow"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow"></label>
-                    <input type="radio" name="speed" id="slow" value="250">
+                    <input type="radio" name="speed" id="slow" value="250" class="hidden_radio">
                     <label for="normal"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal"></label>
-                    <input type="radio" name="speed" id="normal" value="175" checked>
+                    <input type="radio" name="speed" id="normal" value="175" checked class="hidden_radio">
                     <label for="fast"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast"></label>
-                    <input type="radio" name="speed" id="fast" value="100">
+                    <input type="radio" name="speed" id="fast" value="100" class="hidden_radio">
                 </div>
             </form>
         </div>

@@ -33,7 +33,7 @@ nav {
     background-color: var(--bg-off);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 99;
 }
 
 img {
@@ -104,7 +104,7 @@ img {
     border: var(--border);
     box-shadow: var(--shadow);
     position: relative;
-    z-index: 100;
+    z-index: 10;
 }
 
 
