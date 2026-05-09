@@ -382,3 +382,47 @@ inputForm.addEventListener('submit', (e) => {
         console.error(`Failed to start game: ${error}`);
     }
 });
+
+const small = document.getElementById('size_small');
+const medium = document.getElementById('size_medium');
+const large = document.getElementById('size_large');
+
+small.addEventListener('change', (e) => {
+    document.getElementById('small').classList.add('selected');
+    document.getElementById('medium').classList.remove('selected');
+    document.getElementById('large').classList.remove('selected');
+});
+
+medium.addEventListener('change', (e) => {
+    document.getElementById('small').classList.remove('selected');
+    document.getElementById('medium').classList.add('selected');
+    document.getElementById('large').classList.remove('selected');
+});
+
+large.addEventListener('change', (e) => {
+    document.getElementById('small').classList.remove('selected');
+    document.getElementById('medium').classList.remove('selected');
+    document.getElementById('large').classList.add('selected');
+});
+
+const slow = document.getElementById('speed_slow');
+const normal = document.getElementById('speed_normal');
+const fast = document.getElementById('speed_fast');
+
+slow.addEventListener('change', (e) => {
+    document.getElementById('slow').classList.add('selected');
+    document.getElementById('normal').classList.remove('selected');
+    document.getElementById('fast').classList.remove('selected');
+});
+
+normal.addEventListener('change', (e) => {
+    document.getElementById('slow').classList.remove('selected');
+    document.getElementById('normal').classList.add('selected');
+    document.getElementById('fast').classList.remove('selected');
+});
+
+fast.addEventListener('change', (e) => {
+    document.getElementById('slow').classList.remove('selected');
+    document.getElementById('normal').classList.remove('selected');
+    document.getElementById('fast').classList.add('selected');
+});

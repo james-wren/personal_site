@@ -120,3 +120,11 @@ canvas {
     padding: 1vw;
     letter-spacing: .1em;
 }
+
+.selected {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.radio_img:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
