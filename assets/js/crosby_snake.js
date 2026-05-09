@@ -240,12 +240,11 @@ async function gameLoop(rate, size, food){
             if (Math.round(snake_pos[0]['pos'][0]) == Math.round(food_pos[i]['pos'][0]) && Math.round(snake_pos[0]['pos'][1]) == Math.round(food_pos[i]['pos'][1])) {
                 // If it is, replace that peice of food with a new one
                 gpa += getGpa(food_pos[i]);
-                parseFloat(gpa.toFixed(2));
                 addFood(i);
                 length_score++;
                 //Make the snake longer
                 lengthDisplay.innerHTML = `Length: ${length_score}`;
-                gpaDisplay.innerHTML = `GPA: ${gpa}`;
+                gpaDisplay.innerHTML = `GPA: ${gpa.toFixed(2)}`;
                 addCros();
             } else { // If food is not touching then draw it on the canvas
                 ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0] + 1.5, food_pos[i]['pos'][1] + 1.5, grid_width - 3, grid_height - 3);
@@ -309,6 +308,8 @@ function crosbySnake(food, size, speed){
     // makes the game box visible
     document.getElementById('grey_out').style.display = 'flex';
     document.getElementById('crosby_box').style.display = 'block';
+    lengthDisplay.innerHTML = `Length: 0`;
+    gpaDisplay.innerHTML = `GPA: 0`;
     body.style.overflow = 'hidden'; // Stops user from scrolling the background
 
     drawBg(size, size); // Draws the background grid
