@@ -5,6 +5,8 @@ const inputForm = document.getElementById('game_input');
 const submitBtn = document.getElementById('submit');
 const crosbyBox = document.getElementById('crosby_box');
 const crosbyGameBg = document.getElementById('crosby_game_bg');
+const gpaDisplay = document.getElementById('GPA');
+const lengthDisplay = document.getElementById('length');
 
 //defines canvas
 const canvas = document.getElementById('crosby_game');
@@ -242,8 +244,8 @@ async function gameLoop(rate, size, food){
                 addFood(i);
                 length_score++;
                 //Make the snake longer
-                console.log(`Gpa is ${gpa}`);
-                console.log(`length is ${length_score}`);
+                lengthDisplay.innerHTML = `Length: ${length_score}`;
+                gpaDisplay.innerHTML = `GPA: ${gpa}`;
                 addCros();
             } else { // If food is not touching then draw it on the canvas
                 ctx.drawImage(food_pos[i]['img'], food_pos[i]['pos'][0] + 1.5, food_pos[i]['pos'][1] + 1.5, grid_width - 3, grid_height - 3);
