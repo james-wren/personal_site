@@ -20,14 +20,14 @@ Works just like any other clicker game, is currently just AI slop so.
 This game can be effectivly beat in about 10min. I plan on making it a full game eventually.
 
 ### Crosby Snake
-1. Click any arrow key to begin
-2. Navigate the Crosby Snake around the frame
-    - Be careful not to run into yourself or the walls
-3. Collect grades in order to raise your GPA and grow longer
-    - F's lower your GPA , all others raise it
-4. Get a 4.0 so you can play lacrosse.
+1. Pick any options you desire from the menu.
+2. Press the start button, when the window apears press any arrow key to start.
+3. Collect grades to raise (or lower) your GPA.
+4. Keep playing to get enough GPA to play lacrosee
 
 ### Hosting your own site
+Probally important that this is mainly here for my friend who is learning frontend development.
+
 I want to streamline this process within the site itself, but for now simple create a branch of this repo.
 In the branch do the following
 - In the root folder create a folder with your sites name
