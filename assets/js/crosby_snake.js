@@ -319,7 +319,7 @@ function crosbySnake(food, size, speed){
 
     // Sets image srcs for the crosby images
     images.forEach((image, i) =>{
-        image.src = `/assets/images/games/crosby/cros${i}.jpg`;
+        image.src = `/assets/images/games/crosby/cros${i}.JPG`;
     });
 
     // Sets image srcs for the food
