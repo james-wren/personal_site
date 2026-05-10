@@ -1,6 +1,8 @@
 :root {
     --green1: #a7d948;
     --green2: #8ecc39;
+    --purple: #ca96ff;
+    --red: #ff3f3f;
     --blue: #669aff;
 }
 
@@ -15,6 +17,12 @@ h1 {
 main {
     display: flex;
     justify-content: center;
+}
+
+#game_input_box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
 
 .body_box {
@@ -38,12 +46,23 @@ button[type="submit"] {
     justify-content: center;
     font-family: 'Space Mono';
     font-size: 3vw;
+    border-radius: 0;
+    border: .25vw solid black;
+    padding: 2vw;
+    box-shadow: -0.75vw 0.75vw 0px black;
+    background-color: var(--red);
+    margin-bottom: 2vw;
+}
+button[type="submit"]:hover {
+    box-shadow: -0.25vw 0.25vw 0px black;
+    transform: translate(-0.25vw, 0.25vw);
 }
 
 input[type="number"] {
     font-size: 2vw;
     font-family: 'space mono';
-    width: 3em;
+    width: 2em;
+    border: .25vw solid black;
 }
 
 #slow_arrow {
@@ -123,8 +142,68 @@ canvas {
 
 .selected {
     background-color: rgba(0, 0, 0, 0.2);
+    border: .25vw solid black;
+}
+
+.radio_img {
+    margin: 0 1vw;
 }
 
 .radio_img:hover {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+#results > h3 {
+    font-size: 4em;
+    margin: 0.25em;
+    margin-bottom: -1vw;
+    text-decoration: underline 1.5vw var(--blue);
+}
+
+#results > p {
+    font-size: 1.5em;
+    margin: 0.25em;
+}
+
+#verdict_bad {
+    font-size: 1em !important;
+}
+
+#verdict_bad > mark {
+    background-color: rgba(255, 100, 100, 0.7);
+}
+
+#verdict_good {
+    font-size: 1em !important;
+}
+
+#verdict_good > mark {
+    background-color: rgba(100, 255, 100, 0.7);
+}
+
+#replay_btn {
+    padding: .7vw 3vw;
+    border-radius: 0px;
+    border: 3px solid black;
+    box-shadow: -.25vw .25vw 0px #000000;
+    background-color: var(--purple);
+    margin: 1vw 3vw;
+    font-family: 'space mono';
+    font-size: 0.9em;
+    
+}
+
+#options_btn {
+    padding: .7vw 3vw;
+    border-radius: 0px;
+    border: 3px solid black;
+    box-shadow: -.25vw .25vw 0px #000000;
+    background-color: var(--red);
+    font-family: 'space mono';
+    font-size: 0.9em;
+}
+
+.instruct {
+    margin: 1vw;
+    font-size: 1.vw;
 }

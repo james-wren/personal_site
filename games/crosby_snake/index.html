@@ -64,33 +64,63 @@
             <form id="game_input">
                 <button type="submit" id="submit">Start</button>
 
-                <div id="food_num_div" class="option_box">
-                    <label for="food">Number of food:</label>
-                    <input type="number" name="food" id="food" min="1" value="1">
-                </div>
+                <div id="game_input_box">
+                    <div>
+                        <p>
+                            How to play:
+                            <div class="instruct">
+                                1. Choose you options
+                            </div>
+                            <div class="instruct">
+                                2. Push the Start button, then<br>press any arrow key to begin.
+                            </div>
+                            <div class="instruct">
+                                3. Use the arrow keys to direct <br> the snake and gain GPA,  Ds and Fs <br> lower, all else raise.
+                            </div>
+                            <div class="instruct">
+                                4. Keep playing to get enough GPA <br> to play lacrosse.
+                            </div>
+                        </p>
+                    </div>
+                    <div>
+                        <div id="food_num_div" class="option_box">
+                            <label for="food">Number of food:</label>
+                            <input type="number" name="food" id="food" min="1" value="1">
+                        </div>
 
-                <div id="size_div" class="option_box">
-                    <label for="size">Size of grid:</label>
-                    <br>
-                    <label for="size_small"><img src="/assets/images/small_game.svg" alt="Small" class="radio_img" id="small"></label>
-                    <input type="radio" name="size" id="size_small" value="11" class="hidden_radio">
-                    <label for="size_medium"><img src="/assets/images/medium_game.svg" alt="Medium" class="radio_img selected" id="medium"></label>
-                    <input type="radio" name="size" id="size_medium" value="15" checked class="hidden_radio">
-                    <label for="size_large"><img src="/assets/images/large_game.svg" alt="Large" class="radio_img" id="large"></label>
-                    <input type="radio" name="size" id="size_large" value="20" class="hidden_radio">
-                </div>
+                        <div id="size_div" class="option_box">
+                            <label for="size">Size of grid:</label>
+                            <br>
+                            <label for="size_small"><img src="/assets/images/small_game.svg" alt="Small" class="radio_img" id="small"></label>
+                            <input type="radio" name="size" id="size_small" value="11" class="hidden_radio">
+                            <label for="size_medium"><img src="/assets/images/medium_game.svg" alt="Medium" class="radio_img selected" id="medium"></label>
+                            <input type="radio" name="size" id="size_medium" value="15" checked class="hidden_radio">
+                            <label for="size_large"><img src="/assets/images/large_game.svg" alt="Large" class="radio_img" id="large"></label>
+                            <input type="radio" name="size" id="size_large" value="20" class="hidden_radio">
+                        </div>
 
-                <div id="speed_div" class="option_box">
-                    <label for="speed">Snake speed:</label>
-                    <br>
-                    <label for="speed_slow"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow" class="radio_img" id="slow"></label>
-                    <input type="radio" name="speed" id="speed_slow" value="250" class="hidden_radio">
-                    <label for="speed_normal"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal" class="radio_img selected" id="normal"></label>
-                    <input type="radio" name="speed" id="speed_normal" value="175" checked class="hidden_radio">
-                    <label for="speed_fast"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast" class="radio_img" id="fast"></label>
-                    <input type="radio" name="speed" id="speed_fast" value="100" class="hidden_radio">
+                        <div id="speed_div" class="option_box">
+                            <label for="speed">Snake speed:</label>
+                            <br>
+                            <label for="speed_slow"><img src="/assets/images/speed_arrow_slow.svg" alt="Slow" class="radio_img" id="slow"></label>
+                            <input type="radio" name="speed" id="speed_slow" value="250" class="hidden_radio">
+                            <label for="speed_normal"><img src="/assets/images/speed_arrow_norm.svg" alt="Normal" class="radio_img selected" id="normal"></label>
+                            <input type="radio" name="speed" id="speed_normal" value="175" checked class="hidden_radio">
+                            <label for="speed_fast"><img src="/assets/images/speed_arrow_fast.svg" alt="Fast" class="radio_img" id="fast"></label>
+                            <input type="radio" name="speed" id="speed_fast" value="100" class="hidden_radio">
+                        </div>
+                    </div>
                 </div>
             </form>
+            <div id="results" style="display: none;">
+                <h3>Game Over</h3>
+                <p id="length_end">Final Length: </p>
+                <p id="gpa_end">Final GPA: </p>
+                <p id="verdict_bad"><mark>You can't play lacrosse, try agian</mark></p>
+                <p id="verdict_good"><mark>You can play lacrosse</mark></p>
+                <button id="replay_btn">Play Agian</button>
+                <button id="options_btn">Settings</button>
+            </div>
         </div>
     </main>
     <footer>

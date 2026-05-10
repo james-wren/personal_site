@@ -7,6 +7,7 @@ const crosbyBox = document.getElementById('crosby_box');
 const crosbyGameBg = document.getElementById('crosby_game_bg');
 const gpaDisplay = document.getElementById('GPA');
 const lengthDisplay = document.getElementById('length');
+const results = document.getElementById('results');
 
 //defines canvas
 const canvas = document.getElementById('crosby_game');
@@ -56,7 +57,7 @@ async function gameLoop(rate, size, food){
 
     let food_pos = {};//Defines and object for the food peices
 
-    let length = 0; //Defines legth of the snake
+    let length = 0; //Defines length of the snake
 
     function addCros(){
         // Gets a random number for image
@@ -268,6 +269,8 @@ async function gameLoop(rate, size, food){
     document.getElementById('grey_out').style.display = 'none';
     document.getElementById('crosby_box').style.display = 'none';
     body.style.overflow = 'visible';
+
+    endGame(length, gpa);
 }
 
 // Function to draw background grid
@@ -358,6 +361,50 @@ function crosbySnake(food, size, speed){
     });
 }
 
+function endGame(length, GPA) {
+    const choicesRaw = new FormData(inputForm);
+    const choices = Object.fromEntries(choicesRaw.entries());
+    console.debug(choices);//logs choices for debugging
+
+    //starts game with the values from the form
+    let food_choice = parseInt(choices.food);
+    let size_choice = parseInt(choices.size);
+    let speed_choice = parseInt(choices.speed);
+
+    inputForm.style.display = 'none';
+    results.style.display = 'block';
+    document.getElementById('length_end').innerHTML = `Final Length: ${length}`;
+    document.getElementById('gpa_end').innerHTML = `Final GPA: ${GPA.toFixed(2)}`;
+
+    if (GPA >= 4.00) {
+        document.getElementById('verdict_bad').style.display = 'none';
+        document.getElementById('verdict_good').style.display = 'block';
+    } else {
+        document.getElementById('verdict_bad').style.display = 'block';
+        document.getElementById('verdict_good').style.display = 'none';
+    }
+
+    const replay_btn = document.getElementById('replay_btn');
+    const options_btn = document.getElementById('options_btn');
+    const new_replay_btn = replay_btn.cloneNode(true);
+    const new_options_btn = options_btn.cloneNode(true);
+    replay_btn.replaceWith(new_replay_btn);
+    options_btn.replaceWith(new_options_btn);
+
+    new_replay_btn.addEventListener('mousedown', (e) => {
+        end = false; //Sets game to playing
+        moveDir = null;
+        nextDir = null;
+
+        crosbySnake(food_choice, size_choice, speed_choice);
+    }, {once: true});
+
+    new_options_btn.addEventListener('mousedown', (e) => {
+        inputForm.style.display = 'block';
+        results.style.display = 'none';
+    }, {once: true});
+}
+
 function superSnake(){
     crosbySnake(10, 30, 100);
 }
@@ -377,7 +424,11 @@ inputForm.addEventListener('submit', (e) => {
         console.debug(choices);//logs choices for debugging
 
         //starts game with the values from the form
-        crosbySnake(parseInt(choices.food), parseInt(choices.size), parseInt(choices.speed));
+        let food_choice = parseInt(choices.food);
+        let size_choice = parseInt(choices.size);
+        let speed_choice = parseInt(choices.speed);
+
+        crosbySnake(food_choice, size_choice, speed_choice);
     }catch(error) {
         console.error(`Failed to start game: ${error}`);
     }
