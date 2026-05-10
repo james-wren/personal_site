@@ -1,0 +1,209 @@
+:root {
+    --green1: #a7d948;
+    --green2: #8ecc39;
+    --purple: #ca96ff;
+    --red: #ff3f3f;
+    --blue: #669aff;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 8vw;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#game_input_box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.body_box {
+    display: flex;
+    margin: 3vw;
+    padding: 0 3vw;
+    font-size: 2vw;
+    font-family: 'space mono';
+}
+
+.option_box {
+    margin: 1vw;
+}
+
+button[type="submit"] {
+    display: flex;
+    width: 60vw;
+    height: 7vh;
+    margin: 1vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono';
+    font-size: 3vw;
+    border-radius: 0;
+    border: .25vw solid black;
+    padding: 2vw;
+    box-shadow: -0.75vw 0.75vw 0px black;
+    background-color: var(--red);
+    margin-bottom: 2vw;
+}
+button[type="submit"]:hover {
+    box-shadow: -0.25vw 0.25vw 0px black;
+    transform: translate(-0.25vw, 0.25vw);
+}
+
+input[type="number"] {
+    font-size: 2vw;
+    font-family: 'space mono';
+    width: 2em;
+    border: .25vw solid black;
+}
+
+#slow_arrow {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+}
+
+.grey_out {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+#crosby_box {
+    display: none;
+    position: relative;
+    width: 80vh;
+    height: 83vh;
+    background-color: black;
+    z-index: 1000;
+}
+
+#crosby_game_bg {
+    position: absolute;
+    top: 3vw;
+    left: 0;
+    display: grid;
+    height: calc(100% - 3vw);
+    width: 100%;
+}
+
+canvas {
+    position: absolute;
+    top: 3vw;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 3vw);
+}
+
+.hidden_radio {
+    display: none;
+}
+
+#game_header {
+    display: flex;
+    height: calc(3vw - 2px);
+    width: 100%;
+    background-color: var(--blue);
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+.header_item {
+    padding: 0;
+    margin: 0;
+}
+
+#game_header > h5 {
+    font-family: 'space mono';
+    padding: 0 1vw;
+}
+
+#game_header > h4 {
+    font-family: 'bebas neue';
+    font-size: 1.5em;
+    padding: 1vw;
+    letter-spacing: .1em;
+}
+
+.selected {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: .25vw solid black;
+}
+
+.radio_img {
+    margin: 0 1vw;
+}
+
+.radio_img:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#results > h3 {
+    font-size: 4em;
+    margin: 0.25em;
+    margin-bottom: -1vw;
+    text-decoration: underline 1.5vw var(--blue);
+}
+
+#results > p {
+    font-size: 1.5em;
+    margin: 0.25em;
+}
+
+#verdict_bad {
+    font-size: 1em !important;
+}
+
+#verdict_bad > mark {
+    background-color: rgba(255, 100, 100, 0.7);
+}
+
+#verdict_good {
+    font-size: 1em !important;
+}
+
+#verdict_good > mark {
+    background-color: rgba(100, 255, 100, 0.7);
+}
+
+#replay_btn {
+    padding: .7vw 3vw;
+    border-radius: 0px;
+    border: 3px solid black;
+    box-shadow: -.25vw .25vw 0px #000000;
+    background-color: var(--purple);
+    margin: 1vw 3vw;
+    font-family: 'space mono';
+    font-size: 0.9em;
+    
+}
+
+#options_btn {
+    padding: .7vw 3vw;
+    border-radius: 0px;
+    border: 3px solid black;
+    box-shadow: -.25vw .25vw 0px #000000;
+    background-color: var(--red);
+    font-family: 'space mono';
+    font-size: 0.9em;
+}
+
+.instruct {
+    margin: 1vw;
+    font-size: 1.3vw;
+}

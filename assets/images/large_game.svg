@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="136.63197mm"
+   height="136.63197mm"
+   viewBox="0 0 136.63197 136.63197"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-31.683853,-56.68388)">
+    <path
+       id="rect1"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:13.368;stroke-dasharray:none"
+       d="M 31.683854,56.683879 V 100.0001 H 44.999837 V 69.999862 H 75.000073 V 56.683879 Z m 93.316266,0 v 13.315983 h 29.99972 V 100.0001 h 13.31598 V 56.683879 Z M 31.683854,150.00015 v 43.3157 H 75.000073 V 179.99987 H 44.999837 v -29.99972 z m 123.315986,0 v 29.99972 h -29.99972 v 13.31598 h 43.3157 v -43.3157 z" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:105.833px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:15;stroke-dasharray:none"
+       x="65.432716"
+       y="163.34123"
+       id="text1"><tspan
+         id="tspan1"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:15"
+         x="65.432716"
+         y="163.34123">L</tspan></text>
+  </g>
+</svg>
