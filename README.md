@@ -1,4 +1,5 @@
 # My personal website
+**For Macadono, this was not built during the onboarding tutorial, I dont know why it says that, this was built full from scratch.**
 ## Description
 *This site is not intended for mobile*
 
